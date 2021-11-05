@@ -285,11 +285,11 @@
 </div>
   
  <script>
-    const input = document.querySelector('input');
+    const input = document.querySelector('.input-house input[type=file]');
     const preview = document.querySelector('.preview');
 
    
-
+    input.style.display = none;
     input.addEventListener('change', updateImageDisplay);
 
     function updateImageDisplay() {
@@ -297,7 +297,7 @@
       const curFiles = input.files;
       if(curFiles.length === 0) {
         const para = document.createElement('p');
-        para.textContent = 'No files currently selected for upload';
+        para.textContent = 'Acune image selectionnée';
         preview.appendChild(para);
       } else {
         const list = document.createElement('ol');
@@ -315,7 +315,7 @@
             listItem.appendChild(image);
             listItem.appendChild(para);
           } else {
-            para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
+            para.textContent = ` ${file.name}: est un fichier invalide.`;
             listItem.appendChild(para);
           }
 

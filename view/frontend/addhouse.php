@@ -87,15 +87,14 @@
 
     form ol {
       padding-left: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
 
     form li, div > p {
-      background: #eee;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      list-style-type: none;
-      border: 1px solid black;
+    list-style-type: none;
+      border: none;
     }
 
     form img {
@@ -106,25 +105,6 @@
     form p {
       line-height: 32px;
       padding-left: 10px;
-    }
-
-    form label, form button {
-      background-color: #7F9CCB;
-      padding: 5px 10px;
-      border-radius: 5px;
-      border: 1px ridge black;
-      font-size: 0.8rem;
-      height: auto;
-    }
-
-    form label:hover, form button:hover {
-      background-color: #2D5BA3;
-      color: white;
-    }
-
-    form label:active, form button:active {
-      background-color: #0D3F8F;
-      color: white;
     }
   </style>
 
@@ -289,7 +269,7 @@
     const preview = document.querySelector('.preview');
 
    
-    input.style.display = none;
+    input.style.display = 'none';
     input.addEventListener('change', updateImageDisplay);
 
     function updateImageDisplay() {
@@ -305,15 +285,12 @@
 
         for(const file of curFiles) {
           const listItem = document.createElement('li');
-          const para = document.createElement('p');
 
           if(validFileType(file)) {
-            para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
             const image = document.createElement('img');
             image.src = URL.createObjectURL(file);
 
             listItem.appendChild(image);
-            listItem.appendChild(para);
           } else {
             para.textContent = ` ${file.name}: est un fichier invalide.`;
             listItem.appendChild(para);
